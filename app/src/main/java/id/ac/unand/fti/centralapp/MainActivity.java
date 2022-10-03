@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.content.AsyncQueryHandler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
+
+import id.ac.unand.fti.centralapp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
@@ -17,6 +22,9 @@ import id.ac.unand.fti.centralapp.models.Agenda;
 public class MainActivity extends AppCompatActivity implements AgendaAdapter.ItemAgendaClickListener {
 
     private RecyclerView rvAgenda;
+
+    private boolean isLoggedIn = false;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,5 +115,21 @@ public class MainActivity extends AppCompatActivity implements AgendaAdapter.Ite
         Intent detailIntent = new Intent(this, AgendaDetailActivity.class);
         detailIntent.putExtra("NAMA_AGENDA", agenda.getNamaAgenda());
         startActivity(detailIntent);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        Intent mainIntent = getIntent();
+        String username = mainIntent.getStringExtra("USERNAME");
+        isLoggedIn = mainIntent.getBooleanExtra("IS_LOGGED_IN", false);
+
+        if(!isLoggedIn){
+            Intent loginIntent = new Intent(this, LoginActivity.class);
+            startActivity(loginIntent);
+            finish();
+        }
+
+        binding.textGreeting.setText("Hello, " + username);
+
     }
 }

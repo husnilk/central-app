@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Central App</string>
+    <string name="username">사용자 이름</string>
+    <string name="password">비밀번호</string>
+    <string name="login">로그인</string>
+    <string name="logo_unand">심벌 마크 UNAND</string>
+</resources>

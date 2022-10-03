@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Central App</string>
+    <string name="logo_unand">Logo UNAND</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="password">Kata Kunci</string>
+    <string name="login">Masuk</string>
+</resources>
